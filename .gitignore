@@ -16,5 +16,5 @@ Thumbs.db
 .vscode/
 
 # Tauri build artifacts
-src-tauri/target/
+target/
 artifacts/
