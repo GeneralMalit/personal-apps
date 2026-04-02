@@ -12,21 +12,25 @@ I built it because I track my life too much, I need exact numbers, and I wanted 
 
 ### Windows
 
-- Download the `.msi` from the Windows release
-- Install it and open `timestamp-copy` from the Start Menu or desktop shortcut
+- Download the `.msi` from the release page
+- Run the installer
+- Open `timestamp-copy` from the Start Menu or desktop shortcut
 - The app runs in the tray and stays out of the way
 
 ### Extension
 
-- Download the extension zip from the browser release
-- For Brave or Chrome, open the extensions page, enable Developer Mode, and load the unpacked folder
+- Download the extension zip from the release page
+- Unzip it
+- In Brave or Chrome, open the extensions page, enable Developer Mode, and load the unpacked folder
 - If you build locally, use `apps/extension/dist`
 
 ### Release layout
 
 - Windows app and extension are released separately
-- Windows ships as `.msi`
-- Extension ships as a browser extension package
+- Release assets include:
+  - the Windows `.msi`
+  - the browser extension zip
+  - the source code archive provided by GitHub
 
 ## Tech Stack
 

@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: write
       issues: write
@@ -30,6 +30,12 @@ jobs:
 
       - name: Verify workspace
         run: npm run build && npm test
+
+      - name: Package extension
+        run: npm run package:extension
+
+      - name: Build Windows app
+        run: npm run tauri:build --workspace @timestamp-copy/windows
 
       - name: Release
         env:

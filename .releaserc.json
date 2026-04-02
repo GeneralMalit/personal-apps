@@ -15,7 +15,21 @@
         "npmPublish": false
       }
     ],
-    "@semantic-release/github",
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "apps/windows/src-tauri/target/release/bundle/msi/*.msi",
+            "label": "timestamp-copy Windows installer"
+          },
+          {
+            "path": "artifacts/timestamp-copy-extension.zip",
+            "label": "timestamp-copy browser extension"
+          }
+        ]
+      }
+    ],
     [
       "@semantic-release/git",
       {
