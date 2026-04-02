@@ -160,6 +160,8 @@ export function OptionsApp() {
           <ul>
             <li>Click the extension icon any time you want an instant timestamp copy.</li>
             <li>If you want a keyboard path, turn on the shortcut toggle and assign a browser hotkey in Chromium or Brave.</li>
+            <li>Do not use Ctrl+Shift+T for this extension. Chromium reserves that combo for reopening closed tabs.</li>
+            <li>Alt+Shift+T is a safer browser shortcut choice if you want one.</li>
             <li>On Linux, the browser shortcut is often the most useful shortcut path.</li>
             <li>On Windows, the tray app shortcut is usually the cleaner option when it is running.</li>
           </ul>

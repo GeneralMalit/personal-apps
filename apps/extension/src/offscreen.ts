@@ -4,26 +4,35 @@ type CopyMessage = {
 };
 
 async function writeClipboardText(value: string): Promise<void> {
-  if (navigator.clipboard?.writeText) {
-    await navigator.clipboard.writeText(value);
+  const copyWithFallback = () => {
+    const textArea = document.createElement("textarea");
+    textArea.value = value;
+    textArea.setAttribute("readonly", "true");
+    textArea.style.position = "fixed";
+    textArea.style.opacity = "0";
+
+    document.body.append(textArea);
+    textArea.select();
+
+    const successful = document.execCommand("copy");
+    textArea.remove();
+
+    if (!successful) {
+      throw new Error("Clipboard write fallback failed.");
+    }
+  };
+
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      return;
+    }
+  } catch {
+    copyWithFallback();
     return;
   }
 
-  const textArea = document.createElement("textarea");
-  textArea.value = value;
-  textArea.setAttribute("readonly", "true");
-  textArea.style.position = "fixed";
-  textArea.style.opacity = "0";
-
-  document.body.append(textArea);
-  textArea.select();
-
-  const successful = document.execCommand("copy");
-  textArea.remove();
-
-  if (!successful) {
-    throw new Error("Clipboard write fallback failed.");
-  }
+  copyWithFallback();
 }
 
 chrome.runtime.onMessage.addListener((message: CopyMessage, _sender, sendResponse) => {

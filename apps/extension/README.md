@@ -11,3 +11,4 @@ Behavior:
 
 The extension intentionally avoids a default keyboard shortcut so Windows users do not collide with the desktop app by default.
 If you want to use a browser hotkey, turn it on in the settings page and assign one in Chromium or Brave.
+Avoid `Ctrl+Shift+T`; Chromium uses that shortcut for reopening closed tabs. `Alt+Shift+T` is a safer choice.

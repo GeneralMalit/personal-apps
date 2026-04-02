@@ -78,6 +78,8 @@ Shortcut note:
 
 - the extension itself is always active
 - if you want a keyboard path, enable the toggle in the settings page and assign a browser shortcut in `brave://extensions/shortcuts`
+- do not use `Ctrl+Shift+T`; Chromium reserves it for reopening closed tabs
+- `Alt+Shift+T` is a safer browser shortcut if you want one
 - Linux users are more likely to want that browser shortcut enabled
 - Windows users should usually rely on the Windows tray app shortcut to reduce collisions
 
