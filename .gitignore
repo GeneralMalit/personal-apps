@@ -1,0 +1,22 @@
+node_modules/
+dist/
+build/
+.turbo/
+.vite/
+coverage/
+*.log
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Package managers
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb

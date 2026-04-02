@@ -1,0 +1,18 @@
+{
+  "name": "timestamp-copy",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Copy the current time to the clipboard in h:mm:ssAM/PM format.",
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "dev": "npm run dev --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  }
+}
