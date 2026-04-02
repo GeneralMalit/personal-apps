@@ -32,7 +32,7 @@ I built it because I track my life too much, I need exact numbers, and I wanted 
   - the browser extension zip
   - the source code archive provided by GitHub
 
-Note that the installer currently ships without any icon or branding, which can make the Windows download look like a generic binary. We should add a proper logo/visual identity in a future update so it feels trustworthy.
+The installer now uses a clipboard/clock glyph (stored under `apps/windows/src-tauri/icons`) so the release looks less like a generic binary. If you want to refresh that icon later, swap in a new PNG/ICO there.
 
 ## Tech Stack
 
