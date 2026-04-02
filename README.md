@@ -31,6 +31,7 @@ I built it because I track my life too much, I need exact numbers, and I wanted 
   - the Windows `.msi`
   - the browser extension zip
   - the source code archive provided by GitHub
+  - the MSI now carries the clipboard/clock glyph so it matches the installer
 
 The installer now uses a clipboard/clock glyph (stored under `apps/windows/src-tauri/icons`) so the release looks less like a generic binary. If you want to refresh that icon later, swap in a new PNG/ICO there.
 
