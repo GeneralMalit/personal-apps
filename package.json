@@ -1,6 +1,6 @@
 {
   "name": "timestamp-copy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "Copy the current time to the clipboard in h:mm:ssAM/PM format.",
   "license": "MIT",

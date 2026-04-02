@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/GeneralMalit/timestamp-copy/compare/v1.0.1...v1.0.2) (2026-04-02)
+
+
+### Bug Fixes
+
+* **release:** call out new installer art ([35b5f31](https://github.com/GeneralMalit/timestamp-copy/commit/35b5f31171b4ed359050e39f81d8f83eb62c9371))
+
 ## [1.0.1](https://github.com/GeneralMalit/timestamp-copy/compare/v1.0.0...v1.0.1) (2026-04-02)
 
 
