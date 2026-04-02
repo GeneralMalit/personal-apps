@@ -60,25 +60,25 @@ export function getShortcutGuidance(platform: string | undefined): ShortcutGuida
   if (normalized === "linux") {
     return {
       browserShortcutRecommended: true,
-      summary: "Browser shortcut recommended",
+      summary: "Browser shortcut is optional and useful on Linux",
       details:
-        "On Linux, the extension shortcut is often the fastest path because there is no Windows tray app to take over the copy action."
+        "On Linux, the extension is always active, and a browser shortcut can be enabled if you want a faster copy path."
     };
   }
 
   if (normalized === "windows") {
     return {
       browserShortcutRecommended: false,
-      summary: "Windows tray shortcut recommended",
+      summary: "Use the tray app first on Windows",
       details:
-        "On Windows, prefer the tray app shortcut so the browser shortcut does not compete with the desktop shortcut while Chromium is focused."
+        "On Windows, the browser extension still works from the toolbar, but the tray app shortcut is usually the cleaner hotkey."
     };
   }
 
   return {
     browserShortcutRecommended: true,
-    summary: "Choose the shortcut path that fits this device",
+    summary: "Browser shortcut is optional",
     details:
-      "If this machine has a dedicated desktop companion app, prefer that. Otherwise, configuring the browser shortcut is reasonable."
+      "The extension always works from the toolbar. If you want a keyboard path, you can enable and assign the browser shortcut separately."
   };
 }

@@ -16,6 +16,7 @@ describe("extension manifest smoke test", () => {
 
   it("requests only the permissions needed for local clipboard behavior", () => {
     expect(manifest.permissions).toEqual(["offscreen", "clipboardWrite", "storage"]);
+    expect((manifest.commands?.["copy-timestamp"] as { suggested_key?: unknown } | undefined)?.suggested_key).toBeUndefined();
     expect(manifest.commands?.["copy-timestamp"]?.description).toBe("Copy current time to the clipboard");
   });
 });

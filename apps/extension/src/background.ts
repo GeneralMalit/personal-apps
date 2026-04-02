@@ -2,6 +2,7 @@ import { formatCurrentTimestamp } from "@timestamp-copy/core";
 
 const COPY_MESSAGE_TYPE = "copy-timestamp";
 const OFFSCREEN_DOCUMENT_PATH = "offscreen.html";
+const SHORTCUT_ENABLED_STORAGE_KEY = "shortcutEnabled";
 
 let offscreenDocumentPromise: Promise<void> | null = null;
 
@@ -62,6 +63,14 @@ async function copyTimestamp(): Promise<void> {
   }
 }
 
+async function isShortcutEnabled(): Promise<boolean> {
+  const result = await chrome.storage.local.get({
+    [SHORTCUT_ENABLED_STORAGE_KEY]: false
+  });
+
+  return Boolean(result[SHORTCUT_ENABLED_STORAGE_KEY]);
+}
+
 chrome.action.onClicked.addListener(() => {
   void copyTimestamp().catch((error) => {
     console.error("timestamp-copy action failed", error);
@@ -73,7 +82,13 @@ chrome.commands.onCommand.addListener((command) => {
     return;
   }
 
-  void copyTimestamp().catch((error) => {
+  void (async () => {
+    if (!(await isShortcutEnabled())) {
+      return;
+    }
+
+    await copyTimestamp();
+  })().catch((error) => {
     console.error("timestamp-copy command failed", error);
   });
 });

@@ -71,11 +71,14 @@ Main decisions:
 - no popup is attached to the toolbar click
 - settings live in a separate React-powered options page
 - copy actions run through an offscreen clipboard document to stay compatible with MV3 service workers
-- browser shortcut support is exposed as guidance, not forced defaults
+- browser shortcut support is optional and controlled by a settings toggle
+- there is no default browser shortcut bound by the extension
 
 Shortcut note:
 
-- Linux users are more likely to want a browser shortcut configured
+- the extension itself is always active
+- if you want a keyboard path, enable the toggle in the settings page and assign a browser shortcut in `brave://extensions/shortcuts`
+- Linux users are more likely to want that browser shortcut enabled
 - Windows users should usually rely on the Windows tray app shortcut to reduce collisions
 
 ### Windows app
