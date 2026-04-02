@@ -1,192 +1,56 @@
 # timestamp-copy
 
-`timestamp-copy` is a tiny local utility that copies the current local time to the clipboard in one exact format:
+`timestamp-copy` is a small helper for people who track time carefully and want the exact current time copied fast, in the same format everywhere:
 
 ```text
 1:56:07PM
 ```
 
-The product ships as:
+I built it because I track my life too much, I need exact numbers, and I wanted one helper that works the same across platforms. That is why this project has both a Windows app and a web extension: you can jump between them without changing how the time is formatted or copied.
 
-- a Chromium Manifest V3 browser extension
-- a lightweight Windows tray app built with Tauri
-- a shared TypeScript core for timestamp formatting and platform guidance
-
-## Product goal
-
-The tool does one thing:
-
-1. read the current system time
-2. format it as `h:mm:ssAM/PM`
-3. copy it to the clipboard
-
-No extra text. No notification spam. No window-heavy workflow.
-
-## Behavior
-
-- Uses the device's current system clock through JavaScript `Date`
-- Shows hours in 12-hour time
-- Keeps minutes and seconds zero-padded
-- Uses uppercase `AM` / `PM`
-- Omits the space before the meridiem marker
-- Produces values like `9:04:02AM` or `12:33:59PM`
-
-## Time accuracy
-
-`timestamp-copy` intentionally uses local system time, not a network time source.
-
-Why:
-
-- the copy action should be instant and offline-safe
-- the browser extension and the Windows app should behave the same way
-- in Chromium on Linux, macOS, and Windows, `Date` reads from the host operating system clock
-
-This means accuracy depends on the machine's clock being correct. That is the right tradeoff for this utility.
-
-## Architecture
-
-```text
-apps/
-  extension/   Chromium MV3 extension
-  windows/     Tauri tray app
-packages/
-  core/        Shared TypeScript time formatting and platform guidance
-```
-
-### Shared core
-
-The shared core owns:
-
-- timestamp formatting
-- system-time based timestamp generation
-- platform-aware shortcut guidance
-
-### Browser extension
-
-The extension targets Chromium-based browsers, with Brave explicitly in scope.
-
-Main decisions:
-
-- toolbar click copies immediately
-- no popup is attached to the toolbar click
-- settings live in a separate React-powered options page
-- copy actions run through an offscreen clipboard document to stay compatible with MV3 service workers
-- browser shortcut support is optional and controlled by a settings toggle
-- there is no default browser shortcut bound by the extension
-
-Shortcut note:
-
-- the extension itself is always active
-- if you want a keyboard path, enable the toggle in the settings page and assign a browser shortcut in `brave://extensions/shortcuts`
-- do not use `Ctrl+Shift+T`; Chromium reserves it for reopening closed tabs
-- `Alt+Shift+T` is a safer browser shortcut if you want one
-- Linux users are more likely to want that browser shortcut enabled
-- Windows users should usually rely on the Windows tray app shortcut to reduce collisions
+## Install
 
 ### Windows app
 
-The Windows app is a tray-only Tauri app.
+- Release format: `.msi`
+- Download the Windows installer from the release assets
+- Run the installer and open `timestamp-copy` from the Start Menu or desktop shortcut
+- The app runs as a tray app, so it stays out of your way
 
-Main decisions:
+### Web extension
 
-- no visible main window in normal use
-- left click on the tray icon copies the timestamp
-- tray menu contains a manual `Copy current time` action
-- a global shortcut triggers the same copy path
-- a hidden webview hosts the shared TypeScript runtime so the formatting logic stays consistent with the extension
+- Browser target: Chromium-based browsers, including Brave
+- Download the extension release zip, or build locally and load `apps/extension/dist` as unpacked
+- In Brave or Chrome, open the extensions page, enable Developer Mode, and load the unpacked folder
+- If you prefer the packaged artifact, unzip the extension release first and load the extracted folder
 
-## Security stance
+### Separate releases
 
-This project is intentionally conservative:
+The Windows app and the browser extension are packaged separately on purpose:
 
-- no remote APIs
-- no telemetry
-- no remote code loading
-- minimal permissions for the extension
-- no dangerous HTML rendering
-- no clipboard reads, only writes
-- secure-by-default review tracked in `security_best_practices_report.md`
+- the Windows app ships as its own `.msi`
+- the browser extension ships as its own extension package
 
-## Testing and coverage
+That keeps each platform simple and avoids forcing one install path on every user.
 
-The repository targets:
+## Tech Stack
 
-- at least 80% line coverage
-- at least 80% branch coverage
+- TypeScript for the shared timestamp formatting logic
+- Chromium Manifest V3 for the extension
+- React for the small extension settings page
+- Tauri for the Windows tray app
+- Vitest for tests and coverage
+- Vite for builds
+- Semantic Release for versioning and release notes
 
-These thresholds are enforced on the shared and testable TypeScript modules first, and should expand with the product as more behavior becomes directly testable.
+Why these choices:
 
-## Tooling
+- TypeScript keeps the timestamp format identical across the app and extension
+- MV3 keeps the extension compatible with modern Chromium browsers
+- Tauri keeps the Windows app lightweight for a tray-only utility
+- React is only used where it helps, which is the settings page
 
-- TypeScript workspace
-- Vitest for unit tests and coverage
-- Vite for app bundling
-- Semantic Release for automated versioning and release notes
-- GitHub Actions for CI and release automation
+## License
 
-## Getting started
+MIT
 
-### Install dependencies
-
-```bash
-npm install
-```
-
-### Run tests
-
-```bash
-npm test
-```
-
-### Type-check the workspace
-
-```bash
-npm run typecheck
-```
-
-### Build everything
-
-```bash
-npm run build
-```
-
-### Build only the extension
-
-```bash
-npm run build --workspace @timestamp-copy/extension
-```
-
-### Package the extension for loading in Brave or Chromium
-
-After building the extension, load the unpacked folder from `apps/extension/dist`.
-If you prefer a zip, use the packaged artifact at `artifacts/timestamp-copy-extension.zip`.
-
-To create the zip yourself, run `npm run package:extension` after the extension build.
-
-### Install the extension in Brave or Chromium
-
-1. Build the extension with `npm run build --workspace @timestamp-copy/extension`.
-2. Open `brave://extensions` or `chrome://extensions`.
-3. Enable `Developer mode`.
-4. Choose `Load unpacked`.
-5. Select `apps/extension/dist`.
-6. To use a zip instead, unzip `artifacts/timestamp-copy-extension.zip` first and load the extracted folder.
-
-### Run the Windows tray app in development
-
-```bash
-npm run tauri:dev --workspace @timestamp-copy/windows
-```
-
-## Release workflow
-
-Semantic Release is configured for `main` and expects CI-driven publishing. Since this repository is private, npm publishing is disabled by default; release automation is used for changelogs, GitHub releases, and version bookkeeping.
-
-## Repository map
-
-- `AGENTS.md` repository working rules
-- `packages/core` shared timestamp and guidance logic
-- `apps/extension` Chromium extension
-- `apps/windows` Tauri tray application
-- `.github/workflows` CI and release automation
-- `security_best_practices_report.md` security review notes
