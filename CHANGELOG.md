@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/GeneralMalit/timestamp-copy/compare/v1.0.0...v1.0.1) (2026-04-02)
+
+
+### Bug Fixes
+
+* **release:** publish installer and extension assets ([773fdaa](https://github.com/GeneralMalit/timestamp-copy/commit/773fdaa2d1136a5db8b0bbafd0fe037832074287))
+
 # 1.0.0 (2026-04-02)
 
 
