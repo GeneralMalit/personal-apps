@@ -10,28 +10,23 @@ I built it because I track my life too much, I need exact numbers, and I wanted 
 
 ## Install
 
-### Windows app
+### Windows
 
-- Release format: `.msi`
-- Download the Windows installer from the release assets
-- Run the installer and open `timestamp-copy` from the Start Menu or desktop shortcut
-- The app runs as a tray app, so it stays out of your way
+- Download the `.msi` from the Windows release
+- Install it and open `timestamp-copy` from the Start Menu or desktop shortcut
+- The app runs in the tray and stays out of the way
 
-### Web extension
+### Extension
 
-- Browser target: Chromium-based browsers, including Brave
-- Download the extension release zip, or build locally and load `apps/extension/dist` as unpacked
-- In Brave or Chrome, open the extensions page, enable Developer Mode, and load the unpacked folder
-- If you prefer the packaged artifact, unzip the extension release first and load the extracted folder
+- Download the extension zip from the browser release
+- For Brave or Chrome, open the extensions page, enable Developer Mode, and load the unpacked folder
+- If you build locally, use `apps/extension/dist`
 
-### Separate releases
+### Release layout
 
-The Windows app and the browser extension are packaged separately on purpose:
-
-- the Windows app ships as its own `.msi`
-- the browser extension ships as its own extension package
-
-That keeps each platform simple and avoids forcing one install path on every user.
+- Windows app and extension are released separately
+- Windows ships as `.msi`
+- Extension ships as a browser extension package
 
 ## Tech Stack
 
@@ -53,4 +48,3 @@ Why these choices:
 ## License
 
 MIT
-
