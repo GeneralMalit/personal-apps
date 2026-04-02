@@ -71,26 +71,28 @@ async function isShortcutEnabled(): Promise<boolean> {
   return Boolean(result[SHORTCUT_ENABLED_STORAGE_KEY]);
 }
 
-chrome.action.onClicked.addListener(() => {
-  void copyTimestamp().catch((error) => {
+chrome.action.onClicked.addListener(async () => {
+  try {
+    await copyTimestamp();
+  } catch (error) {
     console.error("timestamp-copy action failed", error);
-  });
+  }
 });
 
-chrome.commands.onCommand.addListener((command) => {
+chrome.commands.onCommand.addListener(async (command) => {
   if (command !== COPY_MESSAGE_TYPE) {
     return;
   }
 
-  void (async () => {
+  try {
     if (!(await isShortcutEnabled())) {
       return;
     }
 
     await copyTimestamp();
-  })().catch((error) => {
+  } catch (error) {
     console.error("timestamp-copy command failed", error);
-  });
+  }
 });
 
 chrome.runtime.onInstalled.addListener((details) => {
