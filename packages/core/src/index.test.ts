@@ -28,9 +28,13 @@ describe("formatTimestamp", () => {
 
 describe("formatCurrentTimestamp", () => {
   it("uses the provided system clock provider", () => {
-    const now = () => new Date("2026-04-02T15:45:09");
+    const provided = new Date(2026, 3, 2, 15, 45, 9);
+    const now = () => provided;
 
-    expect(getCurrentSystemTime(now).toISOString()).toBe("2026-04-02T07:45:09.000Z");
+    expect(getCurrentSystemTime(now)).toBe(provided);
+    expect(getCurrentSystemTime(now).getHours()).toBe(15);
+    expect(getCurrentSystemTime(now).getMinutes()).toBe(45);
+    expect(getCurrentSystemTime(now).getSeconds()).toBe(9);
     expect(formatCurrentTimestamp(now)).toBe("3:45:09PM");
   });
 });
