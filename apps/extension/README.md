@@ -1,10 +1,11 @@
 # Extension App
 
-Planned browser extension stack:
+Chromium Manifest V3 extension for `timestamp-copy`.
 
-- Manifest V3
-- React for a minimal popup UI
-- clipboard API for copying timestamps
-- commands API for keyboard shortcuts
+Behavior:
 
-The extension should call the shared formatter from `@timestamp-copy/core`.
+- clicking the toolbar icon copies the current time immediately
+- an options page provides platform-aware shortcut guidance
+- MV3 background logic uses an offscreen document for clipboard writes
+
+The extension intentionally avoids a default keyboard shortcut so Windows users do not collide with the desktop app by default.

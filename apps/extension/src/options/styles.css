@@ -1,0 +1,160 @@
+:root {
+  color-scheme: light;
+  font-family: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+  background: #f7f4ef;
+  color: #221f1a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 720px;
+  background: #f7f4ef;
+  color: #221f1a;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.page-shell {
+  min-height: 100vh;
+  padding: 32px;
+  background:
+    linear-gradient(180deg, rgba(140, 104, 61, 0.06), rgba(140, 104, 61, 0) 160px),
+    #f7f4ef;
+}
+
+.panel {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 28px;
+  border: 1px solid #d9d1c5;
+  border-radius: 12px;
+  background: #fffdf9;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section-header h1,
+.card h2,
+.note h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.section-header p,
+.card p,
+.note p,
+.note li,
+.facts dd,
+.facts dt {
+  line-height: 1.5;
+}
+
+.muted {
+  margin: 0;
+  color: #5b5348;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card,
+.note {
+  padding: 20px;
+  border: 1px solid #dfd8cd;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.facts {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+.facts div {
+  display: grid;
+  gap: 4px;
+}
+
+.facts dt {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #6d6357;
+}
+
+.facts dd {
+  margin: 0;
+  font-size: 1rem;
+  color: #221f1a;
+}
+
+.status {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #3a5d38;
+}
+
+.button {
+  width: fit-content;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid #8b5b2b;
+  border-radius: 9px;
+  background: #8b5b2b;
+  color: #fffdf8;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+.button:hover {
+  background: #73491f;
+  border-color: #73491f;
+}
+
+.button:focus-visible {
+  outline: 2px solid #2f6b52;
+  outline-offset: 2px;
+}
+
+.note ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #3d352a;
+}
+
+@media (max-width: 820px) {
+  body {
+    min-width: 0;
+  }
+
+  .page-shell {
+    padding: 16px;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "timestamp-copy",
+  "version": "0.1.0",
+  "description": "Copy the current local time to the clipboard in h:mm:ssAM/PM format.",
+  "permissions": ["offscreen", "clipboardWrite", "storage"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Copy current time"
+  },
+  "options_page": "options.html",
+  "commands": {
+    "copy-timestamp": {
+      "description": "Copy current time to the clipboard"
+    }
+  },
+  "minimum_chrome_version": "116"
+}

@@ -1,0 +1,18 @@
+[package]
+name = "timestamp-copy"
+version = "0.1.0"
+description = "Tray app that copies the current time to the clipboard."
+authors = ["GeneralMalit"]
+license = "MIT"
+edition = "2021"
+rust-version = "1.77.2"
+
+[build-dependencies]
+tauri-build = { version = "2.2.0", features = [] }
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri = { version = "2.8.2", features = ["tray-icon", "image-ico", "image-png"] }
+tauri-plugin-clipboard-manager = "2.3.0"
+tauri-plugin-global-shortcut = "2.3.0"

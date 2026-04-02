@@ -1,10 +1,12 @@
 # Windows App
 
-Planned Windows app behavior:
+Tray-only Tauri shell for `timestamp-copy`.
 
-- stay lightweight
-- support a background-style launch model
-- copy the formatted timestamp when clicked
-- reuse the shared formatter from `@timestamp-copy/core`
+Behavior:
 
-The Windows shell is intentionally undecided for now so we can choose the lightest option that fits distribution and tray/background behavior well.
+- left click on the tray icon copies the current time
+- tray menu offers a manual `Copy current time` action
+- a global shortcut triggers the same copy path
+- the app does not present a normal window during use
+
+The hidden webview exists only to keep the TypeScript formatter shared with the extension.

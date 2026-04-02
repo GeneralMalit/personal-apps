@@ -15,8 +15,6 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Package managers
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-bun.lockb
+# Tauri build artifacts
+src-tauri/target/
+artifacts/
