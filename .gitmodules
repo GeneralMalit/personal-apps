@@ -1,0 +1,4 @@
+[submodule "timestamp-copy"]
+	path = timestamp-copy
+	url = https://github.com/GeneralMalit/timestamp-copy.git
+	branch = main

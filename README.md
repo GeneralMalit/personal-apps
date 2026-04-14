@@ -1,13 +1,13 @@
 # personal-apps
 
 `personal-apps` is my collection repo for daily-use applications and utilities.
-It currently contains `timestamp-copy`, and future apps can live here as
-additional workspace projects when they belong to the same day-to-day suite.
+It currently contains the `timestamp-copy` submodule, and future apps can live
+here as additional nested repos when they belong to the same day-to-day suite.
 
 ## Current Projects
 
-- `timestamp-copy` - copies the exact current time in `h:mm:ssAM/PM` format
-  from both a Windows tray app and a Chromium extension.
+- `timestamp-copy` - nested repo for copying the exact current time in
+  `h:mm:ssAM/PM` format from both a Windows tray app and a Chromium extension.
 
 ## How to Add a New Project
 
@@ -18,7 +18,8 @@ additional workspace projects when they belong to the same day-to-day suite.
 
 ## Repo Policy
 
-- Default to keeping new daily-use apps inside this repository as subprojects.
+- Default to keeping new daily-use apps inside this repository as submodules or
+  other nested repos.
 - Split a project into its own repo when it needs its own release cadence,
   independent ownership, or a cleaner public boundary.
 - Keep the repo focused on practical apps I actually use.
