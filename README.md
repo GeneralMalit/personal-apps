@@ -8,6 +8,7 @@ here as additional nested repos when they belong to the same day-to-day suite.
 
 - `timestamp-copy` - nested repo for copying the exact current time in
   `h:mm:ssAM/PM` format from both a Windows tray app and a Chromium extension.
+- `curveball`
 
 ## How to Add a New Project
 
