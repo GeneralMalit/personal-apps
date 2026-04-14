@@ -1,56 +1,27 @@
-# timestamp-copy
+# personal-apps
 
-`timestamp-copy` is a small helper for people who track time carefully and want the exact current time copied fast, in the same format everywhere:
+`personal-apps` is my collection repo for daily-use applications and utilities.
+It currently contains `timestamp-copy`, and future apps can live here as
+additional workspace projects when they belong to the same day-to-day suite.
 
-```text
-1:56:07PM
-```
+## Current Projects
 
-I built it because I track my life too much, I need exact numbers, and I wanted one helper that works the same across platforms. That is why this project has both a Windows app and a web extension: you can jump between them without changing how the time is formatted or copied.
+- `timestamp-copy` - copies the exact current time in `h:mm:ssAM/PM` format
+  from both a Windows tray app and a Chromium extension.
 
-## Install
+## How to Add a New Project
 
-### Windows
+- Add a short entry to `README.md` with the project name and purpose.
+- Keep shared code in packages when multiple apps need the same behavior.
+- Add or update tests for any shared logic.
+- Update the local `AGENTS.md` notes if the repo structure or policy changes.
 
-- Download the `.msi` from the release page
-- Run the installer
-- Open `timestamp-copy` from the Start Menu or desktop shortcut
-- The app runs in the tray and stays out of the way
+## Repo Policy
 
-### Extension
-
-- Download the extension zip from the release page
-- Unzip it
-- In Brave or Chrome, open the extensions page, enable Developer Mode, and load the unpacked folder
-- If you build locally, use `apps/extension/dist`
-
-### Release layout
-
-- Windows app and extension are released separately
-- Release assets include:
-  - the Windows `.msi`
-  - the browser extension zip
-  - the source code archive provided by GitHub
-  - the MSI now carries the clipboard/clock glyph so it matches the installer
-
-The installer now uses a clipboard/clock glyph (stored under `apps/windows/src-tauri/icons`) so the release looks less like a generic binary. If you want to refresh that icon later, swap in a new PNG/ICO there.
-
-## Tech Stack
-
-- TypeScript for the shared timestamp formatting logic
-- Chromium Manifest V3 for the extension
-- React for the small extension settings page
-- Tauri for the Windows tray app
-- Vitest for tests and coverage
-- Vite for builds
-- Semantic Release for versioning and release notes
-
-Why these choices:
-
-- TypeScript keeps the timestamp format identical across the app and extension
-- MV3 keeps the extension compatible with modern Chromium browsers
-- Tauri keeps the Windows app lightweight for a tray-only utility
-- React is only used where it helps, which is the settings page
+- Default to keeping new daily-use apps inside this repository as subprojects.
+- Split a project into its own repo when it needs its own release cadence,
+  independent ownership, or a cleaner public boundary.
+- Keep the repo focused on practical apps I actually use.
 
 ## License
 
